@@ -228,10 +228,10 @@
 
 - name: PRELIM | Find all sudoers files.
   when:
-    - rhel_09_432015
-    - rhel_09_432020
-    - rhel_09_432025
-    - rhel_09_432030
+    - rhel_09_432015 or
+      rhel_09_432020 or
+      rhel_09_432025 or
+      rhel_09_432030
   tags:
     - always
   ansible.builtin.shell: find /etc/sudoers /etc/sudoers.d/ -type f ! -name '*~' ! -name '*.*'

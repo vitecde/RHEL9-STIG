@@ -404,16 +404,16 @@
     - name: "MEDIUM | RHEL-09-252050 | PATCH | RHEL 9 must be configured to prevent unrestricted mail relaying. | configure postfix"
       when:
         - rhel9stig_disruption_high
-        - "rhel9stig_postfix_client_conf not in postfix_client_restrict"
+        - "rhel9stig_postfix_client_conf not in postfix_client_restrict.stdout"
       ansible.builtin.shell: "postconf -e 'smtpd_client_restrictions = {{ rhel9stig_postfix_client_conf }}'"
 
     - name: "MEDIUM | RHEL-09-252050 | PATCH | RHEL 9 must be configured to prevent unrestricted mail relaying. | Alert Warning"
-      when: rhel9stig_postfix_client_conf not in postfix_client_restrict
+      when: rhel9stig_postfix_client_conf not in postfix_client_restrict.stdout
       ansible.builtin.debug:
-        msg: "Warning!! Please check postfix client restriction configurations"
+        msg: "Warning!! Please check postfix client restriction configurations -> {{ postfix_client_restrict }}"
 
     - name: "MEDIUM | RHEL-09-252050 | PATCH | RHEL 9 must be configured to prevent unrestricted mail relaying. | Warning Count"
-      when: rhel9stig_postfix_client_conf not in postfix_client_restrict
+      when:   rhel9stig_postfix_client_conf not in postfix_client_restrict.stdout
       ansible.builtin.import_tasks:
         file: warning_facts.yml
 

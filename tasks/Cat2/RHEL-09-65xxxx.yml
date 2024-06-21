@@ -951,7 +951,7 @@
         mode: '0640'
         path: "{{ item }}"
       with_fileglob:
-        - "etc/audit/rules.d/*.rules"
+        - "/etc/audit/rules.d/*.rules"
 
 - name: "MEDIUM | RHEL-09-653115 | PATCH | RHEL 9 /etc/audit/auditd.conf file must have 0640 or less permissive to prevent unauthorized access."
   when:
