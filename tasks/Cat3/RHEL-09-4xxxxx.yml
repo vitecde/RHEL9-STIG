@@ -54,4 +54,5 @@
     insertbefore: BOF
     line: session required pam_lastlog.so showfailed
     path: /etc/pam.d/postlogin
-    regex: session required pam_lastlog.so showfailed
+    regexp: 'session.*required.*pam_lastlog\.so.*showfailed'
+    
