@@ -814,7 +814,6 @@
     - NIST800-53R4_IA-2
   ansible.builtin.lineinfile:
     create: true
-    backrefs: true
     line: card_drivers = cac,\3\4;
     path: /etc/opensc.conf
     regexp: ^(#|)card_drivers(\s*=\s*)(.*)cac(.*);
@@ -836,7 +835,6 @@
     - V-258122
     - NIST800-53R4_IA-2
   ansible.builtin.lineinfile:
-    backrefs: true
     line: pam_cert_auth = True
     path: /etc/sssd/sssd.conf
     regexp: ^(?i)(#|)pam_cert_auth\s*=\s*false
